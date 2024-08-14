@@ -5,6 +5,8 @@ export const Home = () => {
     <>
       <Header />
       <h1>HOME PAGE</h1>
+
+
     </>
   );
 };
