@@ -1,3 +1,4 @@
+import { Footer } from "../components/footer/footer";
 import { Header } from "../components/header/header";
 
 export const About = () => {
@@ -51,8 +52,29 @@ export const About = () => {
           />
         </div>
       </div>
-    
 
+
+      <div className="relative mt-12">
+        {/* Mensagem sobre como os sites de doações funcionam */}
+        <div className="absolute inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50 rounded-lg">
+          <p className="text-lg  text-white text-left px-2">
+          Pequenos gestos, grandes mudanças. Hoje, compartilhamos mais que roupas, compartilhamos amor e esperança. Doe, transforme vidas!
+          </p>
+        </div>
+
+        {/* Vídeo */}
+        <div className="w-full h-[400px] mt-6">
+          <video 
+            src="https://media.istockphoto.com/id/1390888524/video/young-woman-and-younger-siblings-arrive-at-charity-event.mp4?s=mp4-480x480-is&k=20&c=X-E5jlNJOqhBa9xvUDrCGskGHZNMju_ij6WueHcUszk=" 
+            controls
+            className="w-full h-full object-cover rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    
+    
+    
+<Footer/>
     </>
   );
 };
