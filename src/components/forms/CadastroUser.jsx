@@ -47,7 +47,7 @@ export const Cadastro = () => {
   
     return (
       <>
-        <div className="max-w-lg mx-auto p-4  bg-gray-100 shadow-md rounded-lg mt-8">
+        z2y<div className="max-w-lg mx-auto p-4  bg-gray-100 shadow-md rounded-lg mt-8">
           <h2 className="text-2xl font-bold mb-4 text-center text-black">Cadastro</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
 
