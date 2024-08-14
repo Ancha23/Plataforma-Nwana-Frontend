@@ -1,11 +1,11 @@
-import { Header } from "../components/header/header"
-import { FormularioDePublicacao } from "../components/adm/formPublic"
+import { Header } from "../components/header/header";
+import { DonationForm } from "../components/forms/donationForm";
 
 export const Administrador = () => {
-return(
+  return (
     <>
-    <Header/>
-    <FormularioDePublicacao/>
+      <Header />
+      <DonationForm />
     </>
-)
-}
+  );
+};
