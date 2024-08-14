@@ -9,19 +9,14 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import {
-  List,
-  ShoppingCart,
-  UserCircle,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
+import { UserCircle, Flower } from "@phosphor-icons/react";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Roupas", href: "/chothes" },
   { name: "Sobre", href: "/about" },
   { name: "Contactos", href: "/contacts" },
-  { name: "Administrador", href: "/administrador" },
+  { name: "Administrador", href: "/admin" },
 ];
 
 function classNames(...classes) {
@@ -46,14 +41,15 @@ export const Header = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-white border-b-4 border-b-verde-100 fixed top-0 left-0 right-0 z-50"
+      className="bg-white border-b-4 border-b-verde-100  fixed top-0 left-0 right-0 z-50 h-20"
     >
       <div className="mx-auto max-w-7xl px-2 font-roboto sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-roboto font-bold leading-9 tracking-tight text-border-green-500 border-2 border-verde-100 p-2">
-                <Link to="/">Clothes</Link>
+              <h1 className="flex text-4xl font-roboto font-bold leading-9 tracking-tight text-border-green-500 border-2 border-verde-100 p-2">
+                <Link to="/">Nwana</Link>
+                <Flower size={20} weight="fill" className="text-verde-100" />
               </h1>
             </div>
           </div>
@@ -79,7 +75,7 @@ export const Header = () => {
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="relative">
+            {/*<div className="relative">
               <input
                 type="text"
                 className="block w-full pl-10 pr-4 py-2 border bg-cinza-100 rounded-full text-preto-100 font-roboto placeholder-cinza-200 focus:outline-none focus:ring-verde-100 focus:border-verde-100 sm:text-sm"
@@ -94,13 +90,14 @@ export const Header = () => {
                   aria-hidden="true"
                 />
               </div>
-            </div>
-            <button
-              type="button"
-              className="rounded-full bg-cinza-100 p-2 text-verde-200 hover:text-verde-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-verde-200 transition-colors duration-300"
+            </div>*/}
+            <Link
+              to="/donate"
+              className="font-semibold leading-6 bg-amarelo-100 px-8 py-2 mr-4 rounded-full border border-verde-100 text-branco-100 hover:bg-verde-100 transition-colors duration-200"
             >
-              <ShoppingCart className="h-6 w-6" aria-hidden="true" />
-            </button>
+              DOAR
+            </Link>
+
             <Menu as="div" className="relative">
               <div>
                 <MenuButton className="rounded-full bg-cinza-100 p-2 text-verde-200 hover:text-verde-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-verde-200 transition-colors duration-300">

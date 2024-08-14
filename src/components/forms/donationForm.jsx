@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Header } from "../header/header";
 
 export const DonationForm = () => {
   const {
@@ -18,8 +20,8 @@ export const DonationForm = () => {
     formData.append("description", data.description);
     formData.append("size", data.size);
     formData.append("condition", data.condition);
-    formData.append("status", "Pending");
-    formData.append("donorId", "66bcbe624007a6467bb4302a");
+    formData.append("status", "Pendente");
+    formData.append("donorId", "603d2f60b4e04232b08d4f5e");
 
     files.forEach((file) => formData.append("images", file));
 
@@ -33,9 +35,9 @@ export const DonationForm = () => {
           },
         }
       );
-      toast.success("Clothing item added successfully!");
+      toast.success("Roupas adicionadas com sucesso!");
     } catch (error) {
-      toast.error("Failed to add clothing item.");
+      toast.error("Erro ao adicionar roupas!");
       console.error(error);
     }
   };
@@ -45,78 +47,94 @@ export const DonationForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-32 p-8 border border-gray-200 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Add Clothing Item</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4">
-          <label className="block text-gray-700">Item Name</label>
-          <input
-            type="text"
-            {...register("itemName", { required: "Item name is required" })}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-          />
-          {errors.itemName && (
-            <p className="text-red-500 text-sm">{errors.itemName.message}</p>
-          )}
-        </div>
+    <>
+      <Header />
+      <div className="max-w-md h-full flex flex-col mx-auto mt-40 px-2 py-2 items-center justify-center bg-branco-100 shadow-lg font-roboto rounded-md border-b-4 border-verde-100">
+        <h2 className="text-left text-lg font-bold text-preto-100 m-4 uppercase">
+          Adicionar Roupas
+        </h2>
+        <div
+          className="w-[380px] h-1 cover"
+          style={{ background: 'url("./pattern/pattern-kids.jpg")' }}
+        ></div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="my-4">
+            <input
+              type="text"
+              {...register("itemName", {
+                required: "Nome do item é obrigatório!",
+              })}
+              placeholder="Nome Do Item"
+              className="block w-full font-medium rounded-md border-0 py-3 pr-10 pl-2 text-preto-100 shadow-sm ring-inset bg-cinza-100 placeholder:text-cinza-200 focus:ring-2 focus:ring-inset focus:ring-verde-100 focus:outline-none sm:text-sm sm:leading-6"
+            />
+            {errors.itemName && (
+              <p className="text-red-500 text-sm">{errors.itemName.message}</p>
+            )}
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700">Description</label>
-          <textarea
-            {...register("description", {
-              required: "Description is required",
-            })}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-          />
-          {errors.description && (
-            <p className="text-red-500 text-sm">{errors.description.message}</p>
-          )}
-        </div>
+          <div className="mb-4">
+            <textarea
+              {...register("description", {
+                required: "Descrição é obrigatória!",
+              })}
+              placeholder="Descrição"
+              className="block w-full font-medium rounded-md border-0 py-3 pr-10 pl-2 text-preto-100 shadow-sm ring-inset bg-cinza-100 placeholder:text-cinza-200 focus:ring-2 focus:ring-inset focus:ring-verde-100 focus:outline-none sm:text-sm sm:leading-6"
+            />
+            {errors.description && (
+              <p className="text-red-500 text-sm">
+                {errors.description.message}
+              </p>
+            )}
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700">Size</label>
-          <input
-            type="text"
-            {...register("size", { required: "Size is required" })}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-          />
-          {errors.size && (
-            <p className="text-red-500 text-sm">{errors.size.message}</p>
-          )}
-        </div>
+          <div className="mb-4">
+            <input
+              type="text"
+              {...register("size", { required: "Tamanho é obrigatório!" })}
+              placeholder="Tamanho"
+              className="block w-full font-medium rounded-md border-0 py-3 pr-10 pl-2 text-preto-100 shadow-sm ring-inset bg-cinza-100 placeholder:text-cinza-200 focus:ring-2 focus:ring-inset focus:ring-verde-100 focus:outline-none sm:text-sm sm:leading-6"
+            />
+            {errors.size && (
+              <p className="text-red-500 text-sm">{errors.size.message}</p>
+            )}
+          </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700">Condition</label>
-          <select
-            {...register("condition", { required: "Condition is required" })}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          <div className="mb-4">
+            <select
+              {...register("condition", { required: "Estado é obrigatório!" })}
+              placeholder="Estado"
+              className="block w-full font-medium rounded-md border-0 py-3 pr-10 pl-2 text-preto-100 shadow-sm ring-inset bg-cinza-100 placeholder:text-cinza-200 focus:ring-2 focus:ring-inset focus:ring-verde-100 focus:outline-none sm:text-sm sm:leading-6"
+            >
+              <option value="Novo">Novo</option>
+              <option value="Usado">Usado</option>
+            </select>
+            {errors.condition && (
+              <p className="text-red-500 text-sm">{errors.condition.message}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium text-sm">
+              Imagens
+            </label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              multiple
+              accept="image/*"
+              className="block w-full font-medium rounded-md border-0 py-3 pr-10 pl-2 text-preto-100 shadow-sm ring-inset bg-cinza-100 placeholder:text-cinza-200 focus:ring-2 focus:ring-inset focus:ring-verde-100 focus:outline-none sm:text-sm sm:leading-6"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-verde-100 text-white px-4 py-2 font-medium text-sm mb-4 rounded-full shadow-sm hover:bg-verde-200"
           >
-            <option value="New">New</option>
-            <option value="Used">Used</option>
-          </select>
-          {errors.condition && (
-            <p className="text-red-500 text-sm">{errors.condition.message}</p>
-          )}
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Images</label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            multiple
-            accept="image/*"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
-        >
-          Add Clothing Item
-        </button>
-      </form>
-    </div>
+            Adicionar
+          </button>
+        </form>
+        <ToastContainer />
+      </div>
+    </>
   );
 };
