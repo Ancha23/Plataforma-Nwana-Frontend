@@ -4,7 +4,12 @@ import { ErrorPage } from "./pages/error-page";
 import { Clothes } from "./pages/clothes";
 import { About } from "./pages/about";
 import { Contacts } from "./pages/contacts";
-import { Administrador } from "./pages/administrador";
+import { AdminDashboard } from "./pages/administrador";
+import { DonationForm } from "./components/forms/donationForm";
+import { UserManagement } from "./components/admin/UserManagement";
+import { DonationManagement } from "./components/admin/DonationManagement";
+import { RequestManagement } from "./components/admin/RequestManagement";
+import { InventoryManagement } from "./components/admin/InventoryManagement";
 
 export const route = createBrowserRouter([
   {
@@ -26,7 +31,27 @@ export const route = createBrowserRouter([
     element: <Contacts />,
   },
   {
-    path: "/administrador",
-    element: <Administrador />,
+    path: "/admin",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/admin/users",
+    element: <UserManagement />,
+  },
+  {
+    path: "/admin/donations",
+    element: <DonationManagement />,
+  },
+  {
+    path: "/admin/requests",
+    element: <RequestManagement />,
+  },
+  {
+    path: "/admin/inventory",
+    element: <InventoryManagement />,
+  },
+  {
+    path: "/donate",
+    element: <DonationForm />,
   },
 ]);
