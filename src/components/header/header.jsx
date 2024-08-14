@@ -18,9 +18,10 @@ import {
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Roupas", href: "/clothes" },
+  { name: "Roupas", href: "/chothes" },
   { name: "Sobre", href: "/about" },
   { name: "Contactos", href: "/contacts" },
+  { name: "Administrador", href: "/administrador" },
 ];
 
 function classNames(...classes) {

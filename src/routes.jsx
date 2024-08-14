@@ -4,6 +4,7 @@ import { ErrorPage } from "./pages/error-page";
 import { Clothes } from "./pages/clothes";
 import { About } from "./pages/about";
 import { Contacts } from "./pages/contacts";
+import { Administrador } from "./pages/administrador";
 
 export const route = createBrowserRouter([
   {
@@ -23,5 +24,9 @@ export const route = createBrowserRouter([
   {
     path: "/contacts",
     element: <Contacts />,
+  },
+  {
+    path: "/administrador",
+    element: <Administrador />,
   },
 ]);
