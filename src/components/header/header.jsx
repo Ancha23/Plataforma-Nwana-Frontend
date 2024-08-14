@@ -21,7 +21,6 @@ const navigation = [
   { name: "Roupas", href: "/chothes" },
   { name: "Sobre", href: "/about" },
   { name: "Contactos", href: "/contacts" },
-  { name: "Administrador", href: "/administrador" },
 ];
 
 function classNames(...classes) {
@@ -46,14 +45,19 @@ export const Header = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-white border-b-4 border-b-verde-100 fixed top-0 left-0 right-0 z-50"
+      className="bg-white border-b-4 border-b-verde-100  fixed top-0 left-0 right-0 z-50 h-20"
     >
       <div className="mx-auto max-w-7xl px-2 font-roboto sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-roboto font-bold leading-9 tracking-tight text-border-green-500 border-2 border-verde-100 p-2">
-                <Link to="/">Clothes</Link>
+              <h1 className="text-4xl font-roboto font-bold leading-9 tracking-tight p-2">
+                <Link to="/"><img src="/public/imgs/logo.png" alt="" 
+                style={{
+                 width: '100px',   // Defina a largura desejada
+                 height: 'auto'
+                }}
+                /></Link>
               </h1>
             </div>
           </div>
