@@ -41,7 +41,7 @@ export const Header = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-white border-b-4 border-b-verde-100 fixed top-0 left-0 right-0 z-50"
+      className="bg-white border-b-4 border-b-verde-100  fixed top-0 left-0 right-0 z-50 h-20"
     >
       <div className="mx-auto max-w-7xl px-2 font-roboto sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
