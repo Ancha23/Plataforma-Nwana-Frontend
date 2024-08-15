@@ -2,6 +2,7 @@ import { Header } from "../components/header/header";
 import { SliderHome } from "../components/slides/slideHome";
 import { CardHome } from "../components/cards/cardHome";
 import { Footer } from "../components/footer/footer";
+import { motion } from 'framer-motion';
 
 export const Home = () => {
   return (
@@ -17,7 +18,7 @@ export const Home = () => {
       {/* Imagem à Esquerda */}
       <div className="flex-none w-[50%] ">
         <img 
-          src="/public/imgs/roupas-cheias.jpg" 
+          src="/imgs/roupas-cheias.jpg" 
           alt="Roupas" 
           className="w-full h-auto object-cover"
         />
@@ -39,9 +40,22 @@ export const Home = () => {
             compromisso em promover o bem-estar e a dignidade das crianças em nossa comunidade.
           </p>
         </h1>
-        <button className="bg-blue-500 text-white  mt-40 ml-96  w-60 h-10 mb-6 border border-green-500 rounded-md">
+
+            <motion.button
+             initial={{ scale: 1 }}
+             animate={{ scale: [1, 1.1, 1] }}
+             transition={{
+               duration: 1,
+               repeat: Infinity,
+               repeatType: "loop",
+               ease: "easeInOut",
+             }}
+            
+            className="bg-blue-500 text-white  mt-40 ml-96  w-60 h-10 mb-6 border border-green-500 rounded-md">
           Quero Doar Agora
-        </button>
+        </motion.button>
+      
+      
       </div>
     </div>
 

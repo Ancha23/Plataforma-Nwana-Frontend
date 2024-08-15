@@ -60,5 +60,4 @@ export const route = createBrowserRouter([
     path: "/register",
     element: <Cadastro />,
   },
-
 ]);

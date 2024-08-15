@@ -5,8 +5,10 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 export const AdminDashboard = () => {
+  const [users, setUsers] = useState([]);
   const [donations, setDonations] = useState([]);
   const [requests, setRequests] = useState([]);
+  const [inventory, setInventory] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [newItem, setNewItem] = useState({
     itemName: "",
@@ -16,41 +18,47 @@ export const AdminDashboard = () => {
   });
 
   useEffect(() => {
-    const fetchDonations = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3033/api/clothing/donations"
+        const userResponse = await axios.get(
+          "http://localhost:3033/api/auth/users"
         );
-        setDonations(response.data);
+        const donationResponse = await axios.get(
+          "http://localhost:3033/api/clothing/clothing-items"
+        );
+        const requestResponse = await axios.get(
+          "http://localhost:3033/api/requests"
+        );
+        const inventoryResponse = await axios.get(
+          "http://localhost:3033/api/clothing/inventory"
+        );
+
+        setUsers(userResponse.data);
+        setDonations(donationResponse.data);
+        setRequests(requestResponse.data);
+        setInventory(inventoryResponse.data);
       } catch (error) {
-        console.error("Error fetching donations:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    const fetchRequests = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3033/api/clothing/requests"
-        );
-        setRequests(response.data);
-      } catch (error) {
-        console.error("Error fetching requests:", error);
-      }
-    };
-
-    fetchDonations();
-    fetchRequests();
+    fetchData();
   }, []);
 
+  const normalizeStatus = (status) => status.trim().toLowerCase();
+
   const donationGraphData = {
-    labels: ["Pending", "Approved", "Rejected"],
+    labels: ["Pendente", "Aprovado", "Rejeitado"],
     datasets: [
       {
-        label: "Donations",
+        label: "Doações",
         data: [
-          donations.filter((d) => d.status === "Pending").length,
-          donations.filter((d) => d.status === "Approved").length,
-          donations.filter((d) => d.status === "Rejected").length,
+          donations.filter((d) => normalizeStatus(d.status) === "pendente")
+            .length,
+          donations.filter((d) => normalizeStatus(d.status) === "aprovado")
+            .length,
+          donations.filter((d) => normalizeStatus(d.status) === "rejeitado")
+            .length,
         ],
         backgroundColor: ["#f59e0b", "#10b981", "#ef4444"],
       },
@@ -58,14 +66,17 @@ export const AdminDashboard = () => {
   };
 
   const requestGraphData = {
-    labels: ["Pending", "Approved", "Rejected"],
+    labels: ["Pendente", "Aprovado", "Rejeitado"],
     datasets: [
       {
-        label: "Requests",
+        label: "Requisições",
         data: [
-          requests.filter((r) => r.status === "Pending").length,
-          requests.filter((r) => r.status === "Approved").length,
-          requests.filter((r) => r.status === "Rejected").length,
+          requests.filter((r) => normalizeStatus(r.status) === "pendente")
+            .length,
+          requests.filter((r) => normalizeStatus(r.status) === "aprovado")
+            .length,
+          requests.filter((r) => normalizeStatus(r.status) === "rejeitado")
+            .length,
         ],
         backgroundColor: ["#f59e0b", "#10b981", "#ef4444"],
       },
@@ -93,14 +104,14 @@ export const AdminDashboard = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       {/* Side Navigation */}
-      <div className="w-64 h-screen bg-verde-200 text-white font-roboto">
+      <div className="w-64 bg-verde-200 text-white font-roboto">
         <div className="flex items-center mb-6 bg-amarelo-100 p-4 text-preto-100">
           <img
             src="/imgs/avatar.jpg"
             alt="User"
-            className="bg-branco-100 w-10 h-10 rounded-full mr-3"
+            className="w-10 h-10 rounded-full mr-3"
           />
           <div>
             <h4 className="text-lg font-bold">Teodoro Maroupa</h4>
@@ -110,25 +121,25 @@ export const AdminDashboard = () => {
         <nav className="space-y-2">
           <Link
             to="/admin/users"
-            className="block py-2.5 px-4 hover:bg-amarelo-100 focus:bg-amarelo-100"
+            className="block py-2.5 px-4 hover:bg-amarelo-100 hover:text-preto-100 rounded transition-colors"
           >
             Usuários
           </Link>
           <Link
             to="/admin/donations"
-            className="block py-2.5 px-4 hover:bg-amarelo-100"
+            className="block py-2.5 px-4 hover:bg-amarelo-100 hover:text-preto-100 rounded transition-colors"
           >
             Doações
           </Link>
           <Link
             to="/admin/requests"
-            className="block py-2.5 px-4 hover:bg-amarelo-100"
+            className="block py-2.5 px-4 hover:bg-amarelo-100 hover:text-preto-100 rounded transition-colors"
           >
             Requisições
           </Link>
           <Link
             to="/admin/inventory"
-            className="block py-2.5 px-4 hover:bg-amarelo-100"
+            className="block py-2.5 px-4 hover:bg-amarelo-100 hover:text-preto-100 rounded transition-colors"
           >
             Inventário
           </Link>
@@ -137,47 +148,49 @@ export const AdminDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-6 bg-gray-100">
+      <div className="flex-1 p-8 bg-gray-100 overflow-y-auto">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">
-          Welcome back, Brian!
+          Bem-vindo de volta, Teodoro!
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {/* Statistics Cards */}
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-gray-700">Due Tasks</h3>
-            <p className="text-2xl font-bold text-blue-500">21</p>
-            <p className="text-sm text-gray-500">Completed: 13</p>
+          <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Usuários</h3>
+            <p className="text-2xl font-bold text-blue-500">{users.length}</p>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-gray-700">Overdue</h3>
-            <p className="text-2xl font-bold text-red-500">17</p>
-            <p className="text-sm text-gray-500">From yesterday: 9</p>
+          <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Requisições</h3>
+            <p className="text-2xl font-bold text-yellow-500">
+              {requests.length}
+            </p>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-gray-700">Open Issues</h3>
-            <p className="text-2xl font-bold text-yellow-500">24</p>
-            <p className="text-sm text-gray-500">Closed today: 19</p>
+          <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Inventário</h3>
+            <p className="text-2xl font-bold text-green-500">
+              {inventory.length}
+            </p>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-gray-700">Features</h3>
-            <p className="text-2xl font-bold text-green-500">38</p>
-            <p className="text-sm text-gray-500">Implemented: 16</p>
+          <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Doações</h3>
+            <p className="text-2xl font-bold text-red-500">
+              {donations.length}
+            </p>
           </div>
         </div>
 
         {/* Graphs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
             <h2 className="text-2xl font-semibold mb-4 text-gray-700">
-              Donations
+              Doações
             </h2>
             <Bar data={donationGraphData} />
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
             <h2 className="text-2xl font-semibold mb-4 text-gray-700">
-              Requests
+              Requisições
             </h2>
             <Bar data={requestGraphData} />
           </div>
@@ -187,9 +200,9 @@ export const AdminDashboard = () => {
         <div className="flex justify-end mb-6">
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
           >
-            Add Item
+            Adicionar Item
           </button>
         </div>
 
@@ -197,14 +210,14 @@ export const AdminDashboard = () => {
         {showForm && (
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-lg shadow-md"
+            className="bg-white p-6 rounded-lg shadow-lg space-y-4"
           >
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="itemName"
                 className="block text-gray-700 font-semibold"
               >
-                Item Name
+                Nome do Item
               </label>
               <input
                 type="text"
@@ -212,32 +225,32 @@ export const AdminDashboard = () => {
                 name="itemName"
                 value={newItem.itemName}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-2 border rounded"
+                className="w-full p-2 mt-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="description"
                 className="block text-gray-700 font-semibold"
               >
-                Description
+                Descrição
               </label>
               <textarea
                 id="description"
                 name="description"
                 value={newItem.description}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-2 border rounded"
+                className="w-full p-2 mt-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="size"
                 className="block text-gray-700 font-semibold"
               >
-                Size
+                Tamanho
               </label>
               <input
                 type="text"
@@ -245,36 +258,34 @@ export const AdminDashboard = () => {
                 name="size"
                 value={newItem.size}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-2 border rounded"
+                className="w-full p-2 mt-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="condition"
                 className="block text-gray-700 font-semibold"
               >
-                Condition
+                Condição
               </label>
               <select
                 id="condition"
                 name="condition"
                 value={newItem.condition}
                 onChange={handleInputChange}
-                className="w-full p-2 mt-2 border rounded"
+                className="w-full p-2 mt-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="New">New</option>
-                <option value="Used">Used</option>
+                <option value="New">Novo</option>
+                <option value="Used">Usado</option>
               </select>
             </div>
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700"
-              >
-                Add Item
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+            >
+              Adicionar
+            </button>
           </form>
         )}
       </div>
