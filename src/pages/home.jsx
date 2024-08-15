@@ -59,23 +59,6 @@ export const Home = () => {
       </div>
     </div>
 
-      {/* Segundo Componente */}
-      <div className="flex mt-20 ml-16 space-x-4">
-        <div className="w-[800px] bg-blue-100/30 p-4">
-          <h1 className="text-7xl text-blue-600 font-bold">Quero Doar</h1>
-          <p className="mt-20 text-2xl">Doar é muito importante e você pode ajudar muitas pessoas com o Doarei. Cadastre-se!</p>
-          <button className="bg-blue-500 text-white mt-20 w-44 h-10 mb-6 border border-green-500 rounded-md">
-            Quero Doar Agora
-          </button>
-        </div>
-        <div className="w-[800px] bg-red-100/30 p-4">
-          <h1 className="text-7xl text-red-600 font-bold">Quero Requisitar</h1>
-          <p className="mt-20 text-2xl">Muitas pessoas podem ter o que você precisa. Vamos te ajudar a encontrá-las.</p>
-          <button className="bg-red-500 text-white mt-20 w-44 h-10 mb-6 border border-green-500 rounded-md">
-            Quero Requisitar Agora
-          </button>
-        </div>
-      </div>
     </div>
 <Footer/>
     </>
