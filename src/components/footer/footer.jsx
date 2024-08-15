@@ -37,7 +37,7 @@ export const Footer = () => {
       <div className="w-full md:w-1/4">
         <h2 className="text-lg font-semibold mb-4">CONTACTOS </h2>
         <ul className="text-sm space-y-2">
-          <li><a href="mailto:geral@thokoza.co.mz" className="hover:underline transition-colors duration-300">geral@NWANA.co.mz</a></li>
+          <li><a href="mailto:geral@thokoza.co.mz" className="hover:underline transition-colors duration-300">geral@nwana.co.mz</a></li>
           <li><a href="tel:+25886666660" className="hover:underline transition-colors duration-300">+258 84 294 4601</a></li>
           <li><a href="#" className="hover:underline transition-colors duration-300">Moçambique</a></li>
         </ul>

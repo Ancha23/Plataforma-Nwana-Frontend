@@ -1,7 +1,6 @@
 import { Footer } from "../components/footer/footer";
 import { Header } from "../components/header/header";
 import { motion } from "framer-motion";
-import { Roupas } from "../components/cards/cards";
 export const About = () => {
   return (
     <>
@@ -131,6 +130,13 @@ export const About = () => {
             Pequenos gestos, grandes mudanças. Hoje, compartilhamos mais que
             roupas, compartilhamos amor e esperança. Doe, transforme vidas!
           </p>
+        </div>
+        <div className="w-full h-[400px] mt-6 mb-16">
+          <video 
+            src="https://media.istockphoto.com/id/1390888524/video/young-woman-and-younger-siblings-arrive-at-charity-event.mp4?s=mp4-480x480-is&k=20&c=X-E5jlNJOqhBa9xvUDrCGskGHZNMju_ij6WueHcUszk=" 
+            controls
+            className="w-full h-full object-cover rounded-lg shadow-lg"
+          />
         </div>
       </div>
       <Footer />
