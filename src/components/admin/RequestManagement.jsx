@@ -18,10 +18,20 @@ export const RequestManagement = () => {
 
   const updateRequestStatus = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:3033/api/requests/${id}`, { status });
-      setRequests(
-        requests.map((req) => (req._id === id ? { ...req, status } : req))
+      const response = await axios.patch(
+        `http://localhost:3033/api/requests/${id}`,
+        { status }
       );
+
+      if (status === "Aprovado") {
+        setRequests(requests.filter((req) => req._id !== id));
+      } else {
+        setRequests(
+          requests.map((req) =>
+            req._id === id ? { ...req, status: response.data.status } : req
+          )
+        );
+      }
     } catch (error) {
       console.error("Error updating request status:", error);
     }
