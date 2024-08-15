@@ -9,8 +9,8 @@ export const About = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col lg:flex-row justify-around items-center p-6 space-y-6 lg:space-y-0 lg:space-x-6 mt-16 ">
-      <div className="w-full  p-2 h-[400px]">
+      <div className="flex flex-col lg:flex-row justify-around items-center p-6 mt-16 space-y-6 lg:space-y-0 lg:space-x-6">
+      <div className="w-full lg:w-1/2 p-2">
         <img 
           src="https://img.freepik.com/fotos-gratis/um-miudo-africano-a-desfrutar-da-vida_23-2151448529.jpg?t=st=1723681317~exp=1723684917~hmac=3f0fbf5b53457b9982e8ee0ea71ce791d1ad244138c3a3d409d4238f8611c17a&w=1380" 
           alt="Imagem 1" 
@@ -149,7 +149,7 @@ export const About = () => {
 
       </div>
 
-
+<Footer/>
     </>
   );
 };
