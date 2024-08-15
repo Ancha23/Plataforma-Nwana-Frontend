@@ -1,4 +1,4 @@
-  
+import { motion } from 'framer-motion';
   
   const Card = ({ imgSrc, title, description, size, condition }) => {
     return (
@@ -19,9 +19,18 @@
           {size && <p className="text-sm text-gray-600">Tamanho: {size}</p>}
           {condition && <p className="text-sm text-gray-600">Estado: {condition}</p>}
           <div className="card-actions justify-end">
-            <button className="btn btn-primary bg-verde-100 rounded-md text-white ml-56 mb-8 w-32 hover:bg-verde-200">
+            <motion.button 
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{
+              duration: 1,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+            className="btn btn-primary bg-verde-100 rounded-md text-white ml-56 mb-8 w-32 hover:bg-verde-200">
               Requisitar
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
