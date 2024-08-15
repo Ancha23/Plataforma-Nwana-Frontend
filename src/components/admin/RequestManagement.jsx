@@ -37,6 +37,11 @@ export const RequestManagement = () => {
     }
   };
 
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(date).toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
@@ -54,6 +59,9 @@ export const RequestManagement = () => {
               </th>
               <th className="py-3 px-6 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
                 Status
+              </th>
+              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
+                Created At
               </th>
               <th className="py-3 px-6 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
                 Actions
@@ -79,6 +87,9 @@ export const RequestManagement = () => {
                   }`}
                 >
                   {req.status}
+                </td>
+                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                  {formatDate(req.createdAt)}
                 </td>
                 <td className="py-4 px-6 text-sm font-medium whitespace-nowrap">
                   <button

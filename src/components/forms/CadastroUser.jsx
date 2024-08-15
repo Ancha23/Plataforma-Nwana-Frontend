@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+import { useState } from "react"
+import { Header } from "../header/header";
+import { Footer } from "../footer/footer";
+>>>>>>> ddbc6ad18db122097c27242b0dd056fba7b67c56
 
 
 import { Header } from "../header/header";
@@ -18,6 +24,7 @@ export const Cadastro = () => {
     console.log(data);
   };
 
+<<<<<<< HEAD
   return (
     <>
       <Header />
@@ -219,6 +226,40 @@ export const Cadastro = () => {
                   </span>
                 )}
               </div>
+=======
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const { username, email, password, role } = formData;
+      const newErrors = {};
+  
+      if (!username) newErrors.username = 'Username é obrigatório';
+      if (!email) newErrors.email = 'Email é obrigatório';
+      if (!password) newErrors.password = 'Password é obrigatório';
+      if (!role) newErrors.role = 'Role é obrigatório';
+  
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+      }
+  
+      console.log('Formulário enviado', formData);
+      
+      setFormData({
+        username: '',
+        email: '',
+        password: '',
+        role: ''
+      });
+      setErrors({});
+    };
+  
+    return (
+      <>
+      <Header/>
+        <div className="max-w-lg mx-auto p-4  bg-gray-100 shadow-md rounded-lg mt-32 mb-32">
+          <h2 className="text-2xl font-bold mb-4 text-center text-black">Cadastro</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+>>>>>>> ddbc6ad18db122097c27242b0dd056fba7b67c56
 
               <button
                 type="submit"
@@ -241,8 +282,15 @@ export const Cadastro = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
       <Footer />
     </>
   );
 };
+=======
+        <Footer/>
+      </>
+    );
+  };
+>>>>>>> ddbc6ad18db122097c27242b0dd056fba7b67c56
