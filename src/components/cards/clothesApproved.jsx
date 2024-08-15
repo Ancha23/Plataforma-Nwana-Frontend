@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight } from "@phosphor-icons/react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const ApprovedItems = () => {
-  const [approvedItems, setApprovedItems] = useState([]);
+  const [clothes, setClothes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchApprovedItems = async () => {
+    const fetchClothes = async () => {
       try {
         const response = await axios.get(
           "http://localhost:3033/api/clothing/approved-donations"
         );
-        setApprovedItems(response.data);
+        setClothes(response.data);
       } catch (error) {
-        console.error("Error fetching approved items:", error);
-        toast.error("Error fetching approved items.");
+        console.error("Erro ao buscar roupas:", error);
       }
     };
-    fetchApprovedItems();
+
+    fetchClothes();
   }, []);
 
   const handleRequest = async (itemId) => {
@@ -39,36 +40,54 @@ export const ApprovedItems = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h2 className="text-3xl font-bold mb-6 mt-14 text-center text-gray-800">
-        Approved Clothing Items
-      </h2>
-      <div className="flex flex-wrap justify-center">
-        {approvedItems.map((item) => (
-          <div key={item._id} className="card bg-base-100 w-96 shadow-xl m-4">
-            <figure>
-              <img
-                src={item.imageUrl}
-                alt={item.itemName}
-                className="h-48 w-full object-cover"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{item.itemName}</h2>
-              <p>{item.description}</p>
-              <div className="card-actions justify-end">
+    <section className="py-32 bg-white">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="flex items-center mb-8">
+          <h2 className="text-2xl font-roboto font-light text-verde-100 uppercase">
+            Roupas Disponíveis
+          </h2>
+          <div
+            className="w-[980px] h-1 ml-8"
+            style={{ background: 'url("./pattern/pattern-kids.jpg")' }}
+          ></div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          {clothes.map((item, index) => (
+            <div
+              key={index}
+              className="bg-branco-100 rounded-md shadow-sm border-t-2 border-t-verde-100"
+            >
+              <div
+                className="h-32 w-full mb-4 rounded-t-md"
+                style={{
+                  background: `url(${
+                    item.imageUrl || "./pattern/pattern-kids.jpg"
+                  })`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
+
+              <h3 className="text-xl font-roboto font-bold mb-1 ml-4 text-verde-100">
+                {item.itemName}
+              </h3>
+              <p className="text-sm font-roboto text-cinza-300 mb-4 ml-4">
+                {item.size} - {item.condition}
+              </p>
+              <div className="">
                 <button
-                  onClick={() => handleRequest(item._id)}
-                  className="btn btn-primary"
+                  onClick={() => handleRequest(item)}
+                  className="bg-verde-100 text-branco-100 font-roboto w-full h-10 px-3 py-1.5 font-light rounded-b-md text-sm flex items-center gap-1 hover:bg-verde-200 hover:text-branco-100 transition-all duration-300"
                 >
-                  Request
+                  Solicitar
+                  <ArrowRight size={12} />
                 </button>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <ToastContainer />
-    </div>
+    </section>
   );
 };
