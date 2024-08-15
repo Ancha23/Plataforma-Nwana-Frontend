@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-=======
-import { useState } from "react"
-import { Header } from "../header/header";
-import { Footer } from "../footer/footer";
->>>>>>> ddbc6ad18db122097c27242b0dd056fba7b67c56
-
-
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
 import { Envelope, Lock, ShoppingBag, UserCheck } from "@phosphor-icons/react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
 export const Cadastro = () => {
   const {
@@ -24,7 +15,6 @@ export const Cadastro = () => {
     console.log(data);
   };
 
-<<<<<<< HEAD
   return (
     <>
       <Header />
@@ -54,7 +44,7 @@ export const Cadastro = () => {
 
         <div className="w-1/2 h-full flex flex-col items-center justify-center bg-white border border-sky-blue-100">
           <p className="mt-2 text-center text-2xl font-bold tracking-tight text-verde-100">
-           Nwana
+            Nwana
           </p>
           <ShoppingBag
             size={22}
@@ -226,71 +216,11 @@ export const Cadastro = () => {
                   </span>
                 )}
               </div>
-=======
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const { username, email, password, role } = formData;
-      const newErrors = {};
-  
-      if (!username) newErrors.username = 'Username é obrigatório';
-      if (!email) newErrors.email = 'Email é obrigatório';
-      if (!password) newErrors.password = 'Password é obrigatório';
-      if (!role) newErrors.role = 'Role é obrigatório';
-  
-      if (Object.keys(newErrors).length > 0) {
-        setErrors(newErrors);
-        return;
-      }
-  
-      console.log('Formulário enviado', formData);
-      
-      setFormData({
-        username: '',
-        email: '',
-        password: '',
-        role: ''
-      });
-      setErrors({});
-    };
-  
-    return (
-      <>
-      <Header/>
-        <div className="max-w-lg mx-auto p-4  bg-gray-100 shadow-md rounded-lg mt-32 mb-32">
-          <h2 className="text-2xl font-bold mb-4 text-center text-black">Cadastro</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
->>>>>>> ddbc6ad18db122097c27242b0dd056fba7b67c56
-
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-full bg-verde-100 px-2 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-blue-200 uppercase"
-              >
-                Criar Conta
-              </button>
             </form>
-
-            <div className="mt-4 text-center text-sm text-gray-500">
-              <span className="text-sm font-medium leading-6 text-gray-900 mr-2">
-                Já tens uma conta?
-              </span>
-              <Link
-                to="/login"
-                className="font-semibold leading-6 text-sky-blue-200 hover:text-orange transition-colors duration-200 underline"
-              >
-                Iniciar Sessão
-              </Link>
-            </div>
           </div>
         </div>
-<<<<<<< HEAD
       </div>
       <Footer />
     </>
   );
 };
-=======
-        <Footer/>
-      </>
-    );
-  };
->>>>>>> ddbc6ad18db122097c27242b0dd056fba7b67c56
