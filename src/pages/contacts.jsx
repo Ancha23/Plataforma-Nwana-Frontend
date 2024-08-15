@@ -85,7 +85,7 @@ export const Contacts = () => {
       <p className="text-center text-lg mt-4 max-w-prose mx-auto">
         Entre em contacto connosco, visite as nossas plataformas e veja as doações feitas. Você pode fazer o mesmo doando, fazendo o bem para os que mais precisam.
       </p>
-      <div className="mt-8 flex justify-center space-x-4">
+      <div className="mt-8 flex justify-center space-x-4 mb-8">
         <a href="https://wa.me/yourwhatsapp" target="_blank" rel="noopener noreferrer" className="text-green-600 text-4xl">
           <WhatsappLogo weight="bold" />
         </a>
@@ -99,6 +99,7 @@ export const Contacts = () => {
           <TwitterLogo weight="bold" />
         </a>
       </div>
+      <Footer/>
     </>
   );
 };
