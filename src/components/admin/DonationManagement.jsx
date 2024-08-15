@@ -20,13 +20,22 @@ export const DonationManagement = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.patch(
-        `http://localhost:3033/api/clothing/clothing-items/${id}`,
-        { status }
-      );
-      setDonations(
-        donations.map((item) => (item._id === id ? { ...item, status } : item))
-      );
+      if (status === "Rejeitado") {
+        await axios.delete(
+          `http://localhost:3033/api/clothing/clothing-items/${id}`
+        );
+        setDonations(donations.filter((item) => item._id !== id));
+      } else {
+        await axios.patch(
+          `http://localhost:3033/api/clothing/clothing-items/${id}`,
+          { status }
+        );
+        setDonations(
+          donations.map((item) =>
+            item._id === id ? { ...item, status } : item
+          )
+        );
+      }
     } catch (error) {
       console.error("Error updating status:", error);
     }

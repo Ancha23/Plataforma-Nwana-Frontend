@@ -18,13 +18,28 @@ export const RequestManagement = () => {
 
   const updateRequestStatus = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:3033/api/requests/${id}`, { status });
-      setRequests(
-        requests.map((req) => (req._id === id ? { ...req, status } : req))
+      const response = await axios.patch(
+        `http://localhost:3033/api/requests/${id}`,
+        { status }
       );
+
+      if (status === "Aprovado") {
+        setRequests(requests.filter((req) => req._id !== id));
+      } else {
+        setRequests(
+          requests.map((req) =>
+            req._id === id ? { ...req, status: response.data.status } : req
+          )
+        );
+      }
     } catch (error) {
       console.error("Error updating request status:", error);
     }
+  };
+
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(date).toLocaleDateString(undefined, options);
   };
 
   return (
@@ -44,6 +59,9 @@ export const RequestManagement = () => {
               </th>
               <th className="py-3 px-6 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
                 Status
+              </th>
+              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
+                Created At
               </th>
               <th className="py-3 px-6 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
                 Actions
@@ -69,6 +87,9 @@ export const RequestManagement = () => {
                   }`}
                 >
                   {req.status}
+                </td>
+                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                  {formatDate(req.createdAt)}
                 </td>
                 <td className="py-4 px-6 text-sm font-medium whitespace-nowrap">
                   <button
