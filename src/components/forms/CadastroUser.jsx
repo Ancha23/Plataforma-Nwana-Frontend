@@ -18,7 +18,7 @@ export const Cadastro = () => {
   return (
     <>
       <Header />
-      <div className="w-[1200px] h-[700px] flex mx-auto mt-44">
+      <div className="w-[1200px] h-[700px] flex mx-auto my-40">
         <div className="w-1/2 h-full bg-sky-blue-200 relative flex items-center justify-center">
           <img
             src="/public/imgs/imagemContact.jpg"
