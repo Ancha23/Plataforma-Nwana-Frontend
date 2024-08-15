@@ -99,7 +99,6 @@ export const About = () => {
           </div>
         </div>
       </div>
-
       {/* Closing Section */}
       <div className="relative mt-16 py-8 px-4 md:px-8 lg:px-16 bg-verde-100 rounded-lg text-center">
         <p className="text-lg md:text-xl text-white">
