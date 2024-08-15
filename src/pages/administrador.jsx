@@ -119,6 +119,8 @@ export const AdminDashboard = () => {
           </div>
         </div>
         <nav className="space-y-2">
+
+    
           <Link
             to="/admin/users"
             className="block py-2.5 px-4 hover:bg-amarelo-100 hover:text-preto-100 rounded transition-colors"
@@ -143,7 +145,13 @@ export const AdminDashboard = () => {
           >
             Inventário
           </Link>
-          {/* More navigation links */}
+           
+          <Link
+            to="/"
+            className="block py-2.5 px-4 hover:bg-amarelo-100 hover:text-preto-100 rounded transition-colors"
+          >
+            Home
+          </Link>
         </nav>
       </div>
 
