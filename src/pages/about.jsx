@@ -92,7 +92,7 @@ export const About = () => {
             <span className="mt-6 md:mt-10 lg:mt-12 block relative">
               <div className="flex flex-col items-center">
                 {" "}
-                {/* Adicionei items-center para centralizar os botões */}
+                
                 <motion.div
                   initial={{ opacity: 0.5 }}
                   animate={{ opacity: [0.5, 1, 0.5] }}
@@ -102,7 +102,7 @@ export const About = () => {
                     repeatType: "loop",
                   }}
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                  style={{ zIndex: 10 }} // Adicionei border temporária para depuração
+                  style={{ zIndex: 10 }} 
                 >
                   <button className="bg-verde-100 w-20 ml-28">
                     Requisitar
