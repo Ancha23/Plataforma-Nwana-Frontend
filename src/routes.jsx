@@ -11,6 +11,7 @@ import { UserManagement } from "./components/admin/UserManagement";
 import { DonationManagement } from "./components/admin/DonationManagement";
 import { RequestManagement } from "./components/admin/RequestManagement";
 import { InventoryManagement } from "./components/admin/InventoryManagement";
+import { Login } from "./components/forms/login";
 
 export const route = createBrowserRouter([
   {
@@ -59,5 +60,9 @@ export const route = createBrowserRouter([
   {
     path: "/register",
     element: <Cadastro />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
