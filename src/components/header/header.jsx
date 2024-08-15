@@ -9,7 +9,7 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { UserCircle, Flower } from "@phosphor-icons/react";
+import { UserCircle, Flower, HandHeart } from "@phosphor-icons/react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -41,7 +41,7 @@ export const Header = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-white border-b-4 border-b-verde-100  fixed top-0 left-0 right-0 z-50 h-20"
+      className="bg-white border-b-2 border-b-verde-100 p-2 fixed top-0 left-0 right-0 z-50 h-20"
     >
       <div className="mx-auto max-w-7xl px-2 font-roboto sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
@@ -63,8 +63,8 @@ export const Header = () => {
                     aria-current={item.href === current ? "page" : undefined}
                     className={classNames(
                       item.href === current
-                        ? "bg-verde-100 text-white font-roboto font-light"
-                        : "text-preto-100 font-roboto font-light hover:bg-verde-200 hover:text-white transition-colors duration-300",
+                        ? "border-b-2 border-b-verde-100 text-preto-100 font-roboto font-bold uppercase"
+                        : "text-preto-100 font-roboto font-bold uppercase hover:border-b-verde-200 hover:border-b-2 hover:text-preto-100 transition-colors duration-300",
                       "rounded-lg px-4 py-2.5"
                     )}
                   >
@@ -74,34 +74,23 @@ export const Header = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            {/*<div className="relative">
-              <input
-                type="text"
-                className="block w-full pl-10 pr-4 py-2 border bg-cinza-100 rounded-full text-preto-100 font-roboto placeholder-cinza-200 focus:outline-none focus:ring-verde-100 focus:border-verde-100 sm:text-sm"
-                placeholder="Pesquisar..."
-              />
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <List className="h-5 w-5 text-cinza-200" aria-hidden="true" />
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                <MagnifyingGlass
-                  className="h-5 w-5 text-cinza-200"
-                  aria-hidden="true"
-                />
-              </div>
-            </div>*/}
+          <div className="flex items-center space-x-4">
             <Link
               to="/donate"
-              className="font-semibold leading-6 bg-amarelo-100 px-8 py-2 mr-4 rounded-full border border-verde-100 text-branco-100 hover:bg-verde-100 transition-colors duration-200"
+              className="flex justify-center items-center font-bold text-2xl leading-6 bg-amarelo-100 px-8 py-2 mr-4 rounded-full border border-verde-100 text-branco-100 hover:bg-verde-100 transition-colors duration-300"
             >
               DOAR
+              <HandHeart
+                weight="fill"
+                className="h-8 w-8 ml-4"
+                aria-hidden="true"
+              />
             </Link>
 
             <Menu as="div" className="relative">
               <div>
                 <MenuButton className="rounded-full bg-cinza-100 p-2 text-verde-200 hover:text-verde-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-verde-200 transition-colors duration-300">
-                  <UserCircle className="h-6 w-6" aria-hidden="true" />
+                  <UserCircle className="h-7 w-7" aria-hidden="true" />
                 </MenuButton>
               </div>
               <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
