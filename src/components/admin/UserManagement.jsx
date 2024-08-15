@@ -7,7 +7,9 @@ export const UserManagement = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3033/api/users");
+        const response = await axios.get(
+          "http://localhost:3033/api/auth/users"
+        );
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
