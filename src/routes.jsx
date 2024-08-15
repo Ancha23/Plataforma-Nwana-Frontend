@@ -4,7 +4,6 @@ import { ErrorPage } from "./pages/error-page";
 import { Clothes } from "./pages/clothes";
 import { About } from "./pages/about";
 import { Contacts } from "./pages/contacts";
-import { Administrador } from "./pages/administrador";
 import { Cadastro } from "./components/forms/CadastroUser";
 import { AdminDashboard } from "./pages/administrador";
 import { DonationForm } from "./components/forms/donationForm";

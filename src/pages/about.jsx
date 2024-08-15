@@ -5,7 +5,7 @@ export const About = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col lg:flex-row justify-around items-center p-6 mt-12 space-y-6 lg:space-y-0 lg:space-x-6">
+      <div className="flex flex-col lg:flex-row justify-around items-center p-6 mt-16 space-y-6 lg:space-y-0 lg:space-x-6">
       <div className="w-full lg:w-1/2 p-2">
         <img 
           src="https://img.freepik.com/fotos-premium/voluntarios-classificando-roupas-doadas-em-um-centro-de-doacao-de-caridade-comunitaria_1304123-522.jpg?size=626&ext=jpg&ga=GA1.1.181496407.1723666645&semt=ais_hybrid" 
@@ -72,7 +72,7 @@ export const About = () => {
         </div>
       </div>
 
-
+<Footer/>
     </>
   );
 };

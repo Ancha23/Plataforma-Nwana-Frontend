@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Header } from "../header/header";
+import { Footer } from "../footer/footer";
 
 
 
@@ -47,7 +49,8 @@ export const Cadastro = () => {
   
     return (
       <>
-        z2y<div className="max-w-lg mx-auto p-4  bg-gray-100 shadow-md rounded-lg mt-8">
+      <Header/>
+        <div className="max-w-lg mx-auto p-4  bg-gray-100 shadow-md rounded-lg mt-32 mb-32">
           <h2 className="text-2xl font-bold mb-4 text-center text-black">Cadastro</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -118,6 +121,7 @@ export const Cadastro = () => {
             </div>
           </form>
         </div>
+        <Footer/>
       </>
     );
   };
