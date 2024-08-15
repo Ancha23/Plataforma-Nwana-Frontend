@@ -13,7 +13,7 @@ export const TopClothes = () => {
     const fetchClothes = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3033/api/clothing/clothing-items"
+          "http://localhost:3033/api/clothing/approved-donations"
         );
         setClothes(response.data);
       } catch (error) {
@@ -60,12 +60,15 @@ export const TopClothes = () => {
               <div
                 className="h-32 w-full mb-4 rounded-t-md"
                 style={{
-                  background: `url(${item.imageUrl})`,
+                  background: `url(${
+                    item.imageUrl || "./pattern/pattern-kids.jpg"
+                  })`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               ></div>
-              <h3 className="text-xl font-roboto font-bold mb-1 ml-4">
+
+              <h3 className="text-xl font-roboto font-bold mb-1 ml-4 text-verde-100">
                 {item.itemName}
               </h3>
               <p className="text-sm font-roboto text-cinza-300 mb-4 ml-4">

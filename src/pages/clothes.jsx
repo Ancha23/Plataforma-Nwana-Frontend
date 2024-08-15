@@ -6,9 +6,8 @@ export const Clothes = () => {
   return (
     <>
       <Header />
-      <h1>CLOTHES PAGE</h1>
       <ApprovedItems />
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -47,7 +47,7 @@ export const Header = () => {
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex flex-col items-center">
-              <h1 className="flex text-4xl font-roboto font-bold leading-9 tracking-tight text-border-green-500 border-2 border-verde-100 p-2">
+              <h1 className="flex text-4xl font-roboto font-bold leading-9 tracking-tight text-verde-100 border-2 border-verde-100 p-2">
                 <Link to="/">Nwana</Link>
                 <Flower size={20} weight="fill" className="text-verde-100" />
               </h1>
