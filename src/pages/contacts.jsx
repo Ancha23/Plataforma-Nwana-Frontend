@@ -1,5 +1,5 @@
 import { Header } from "../components/header/header";
-
+import { Footer } from "../components/footer/footer";
 export const Contacts = () => {
   return (
     <>
@@ -23,6 +23,7 @@ export const Contacts = () => {
       className="w-full" />
   </div>
   </div>
+  <Footer/>
     </>
   );
 };
