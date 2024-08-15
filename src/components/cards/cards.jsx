@@ -1,4 +1,4 @@
-  
+import { motion } from 'framer-motion';
   
   const Card = ({ imgSrc, title, description, size, condition }) => {
     return (
@@ -13,15 +13,24 @@
             }}
           />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">{title}</h2>
+        <div className="card-body ml-2 ">
+          <h2 className="card-title font-bold text-lg">{title}</h2>
           <p>{description}</p>
           {size && <p className="text-sm text-gray-600">Tamanho: {size}</p>}
           {condition && <p className="text-sm text-gray-600">Estado: {condition}</p>}
           <div className="card-actions justify-end">
-            <button className="btn btn-primary bg-verde-100 rounded-md text-white">
+            <motion.button 
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{
+              duration: 1,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+            className="btn btn-primary bg-verde-100 rounded-md text-white ml-56 mb-8 w-32 hover:bg-verde-200">
               Requisitar
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -33,35 +42,35 @@
       {
         imgSrc: "https://img.freepik.com/fotos-premium/tres-conjuntos-de-roupas-de-bebe-colocadas-no-chao-de-madeira_437323-10330.jpg?ga=GA1.1.860888004.1721808221&semt=ais_hybrid",
         title: "Conjunto de Bebê 1",
-        description: "Se um cachorro mastiga sapatos, de quem ele escolhe?",
+        description: "Conjunto confortavel Disponivel Bonito e elegante!Voce aaska",
         size: "P",
         condition: "Novo",
       },
       {
         imgSrc: "https://img.freepik.com/fotos-premium/tres-conjuntos-de-roupas-de-bebe-colocadas-no-chao-de-madeira_437323-10330.jpg?ga=GA1.1.860888004.1721808221&semt=ais_hybrid",
         title: "Conjunto de Bebê 2",
-        description: "Se um cachorro mastiga sapatos, de quem ele escolhe?",
+        description: "Conjunto confortavel Disponivel Bonito e elegante!Voce aaska",
         size: "M",
         condition: "Usado",
       },
       {
         imgSrc: "https://img.freepik.com/fotos-premium/tres-conjuntos-de-roupas-de-bebe-colocadas-no-chao-de-madeira_437323-10330.jpg?ga=GA1.1.860888004.1721808221&semt=ais_hybrid",
         title: "Conjunto de Bebê 2",
-        description: "Se um cachorro mastiga sapatos, de quem ele escolhe?",
+        description: "Conjunto confortavel Disponivel Bonito e elegante!Voce aaska",
         size: "M",
         condition: "Usado",
       },
       {
         imgSrc: "https://img.freepik.com/fotos-premium/tres-conjuntos-de-roupas-de-bebe-colocadas-no-chao-de-madeira_437323-10330.jpg?ga=GA1.1.860888004.1721808221&semt=ais_hybrid",
         title: "Conjunto de Bebê 2",
-        description: "Se um cachorro mastiga sapatos, de quem ele escolhe?",
+        description: "Conjunto confortavel Disponivel Bonito e elegante!Voce aaska",
         size: "M",
         condition: "Usado",
       },
       {
         imgSrc: "https://img.freepik.com/fotos-premium/tres-conjuntos-de-roupas-de-bebe-colocadas-no-chao-de-madeira_437323-10330.jpg?ga=GA1.1.860888004.1721808221&semt=ais_hybrid",
         title: "Conjunto de Bebê 2",
-        description: "Se um cachorro mastiga sapatos, de quem ele escolhe?",
+        description: "Conjunto confortavel Disponivel Bonito e elegante!Voce aaska",
         size: "M",
         condition: "Usado",
       },
@@ -99,7 +108,7 @@
     return (
       <>
         <h1 className="text-3xl mt-20 text-amarelo-100">Requisite aqui as roupas que precisa</h1>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap ml-40">
           {cardData.map((card, index) => (
             <Card
               key={index}

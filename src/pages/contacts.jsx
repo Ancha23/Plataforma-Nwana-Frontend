@@ -1,5 +1,6 @@
 import { Header } from "../components/header/header";
 import { WhatsappLogo, FacebookLogo, InstagramLogo, TwitterLogo } from 'phosphor-react';
+import { Footer } from "../components/footer/footer";
 
 export const Contacts = () => {
   return (
